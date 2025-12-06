@@ -3,13 +3,13 @@ header("Access-Control-Allow-Origin: *");
 include 'dbconnect.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    http_response_code(405); 
+    http_response_code(405);
     echo json_encode(array('error' => 'Method Not Allowed'));
     exit();
 }
 
 if (!isset($_POST['user_email']) || !isset($_POST['user_password']) || !isset($_POST['user_name']) || !isset($_POST['user_phone'])) {
-    http_response_code(400); 
+    http_response_code(400);
     echo json_encode(array('error' => 'Bad Request'));
     exit();
 }
@@ -35,7 +35,7 @@ try {
     if ($conn->query($sqlreg) === TRUE) {
         $response = array('status' => 'success', 'message' => 'User registered successfully');
         sendJsonResponse($response); 
-    } else {
+    }else{
         $response = array('status' => 'failed', 'message' => 'User registration failed');
         sendJsonResponse($response); 
     }
