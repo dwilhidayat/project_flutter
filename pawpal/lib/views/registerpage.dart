@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pawpal/loginpage.dart';
+import 'package:pawpal/views/loginpage.dart';
 import 'package:pawpal/myconfig.dart';
 
 class RegisterPage extends StatefulWidget {

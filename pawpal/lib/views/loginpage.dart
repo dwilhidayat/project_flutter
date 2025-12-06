@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pawpal/mainpage.dart';
+import 'package:pawpal/views/mainpage.dart';
 import 'package:pawpal/myconfig.dart';
-import 'package:pawpal/registerpage.dart';
-import 'package:pawpal/user.dart';
+import 'package:pawpal/views/registerpage.dart';
+import 'package:pawpal/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
@@ -218,6 +218,7 @@ class _LoginPageState extends State<LoginPage> {
         .then((response) {
           log(response.body);
           log(response.statusCode.toString());
+          
           if (response.statusCode == 200) {
             var jsonResponse = response.body;
             var resarray = jsonDecode(jsonResponse);
