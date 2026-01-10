@@ -126,8 +126,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(height: 10),
                   TextButton(
                     onPressed: () {
-                      Navigator.pop(context);
-                      Navigator.push(
+                      
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const LoginPage(),

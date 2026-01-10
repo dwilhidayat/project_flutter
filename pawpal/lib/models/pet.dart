@@ -1,5 +1,6 @@
 class Pet {
   String? submissionId;
+  int?petId;
   String? petName;
   String? petType;
   String? category;
@@ -8,9 +9,11 @@ class Pet {
   String? longitude;
   String? imagePath;
   String? createdDate;
+  
 
   Pet({
     this.submissionId,
+    this.petId,
     this.petName,
     this.petType,
     this.category,
@@ -23,6 +26,7 @@ class Pet {
 
   Pet.fromJson(Map<String, dynamic> json) {
     submissionId = json['submission_id'];
+    petId = int.parse(json['pet_id'].toString());
     petName = json['pet_name'];
     petType = json['pet_type'];
     category = json['category'];
@@ -33,9 +37,12 @@ class Pet {
     createdDate = json['created_date'];
   }
 
+  
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['submission_id'] = submissionId;
+    data['pet_id'] = petId;
     data['pet_name'] = petName;
     data['pet_type'] = petType;
     data['category'] = category;

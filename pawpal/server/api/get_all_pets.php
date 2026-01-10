@@ -1,4 +1,4 @@
-<?php
+ <?php
     header("Access-Control-Allow-Origin: *");
     include 'dbconnect.php';
 
@@ -7,10 +7,20 @@
         exit();
     }
 
-    $userid = $_GET['user_id'];
+    $sql = "SELECT * FROM tbl_pets WHERE 1";
 
-    $sql = "SELECT * FROM tbl_pets WHERE user_id = '$userid' ORDER BY pet_id DESC";
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $conn->real_escape_string($_GET['search']);
+        $sql .= " AND pet_name LIKE '%$search%'";
+    }
+    if (isset($_GET['type']) && $_GET['type'] != "all") {
+        $type = $conn->real_escape_string($_GET['type']);
+        $sql .= " AND pet_type = '$type'";
+    }
+    $sql .= " ORDER BY pet_id DESC";
+
     $result = $conn->query($sql);
+
 
     if ($result->num_rows > 0) {
         $petdata = array();
